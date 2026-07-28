@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fine Art Gallery | Original Fine Art Collection</title>
+  <meta name="description" content="Explore original fine art paintings, mixed media works, and expressionist collections. Inquire for private viewings and collector catalog access.">
+  
+  <!-- SEO: Google Schema.org VisualArtwork Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ArtGallery",
+        "@id": "https://yourdomain.com/#gallery",
+        "name": "Fine Art Collection Gallery",
+        "url": "https://yourdomain.com",
+        "description": "Private collection of original fine art paintings and expressionist works."
+      },
+      {
+        "@type": "VisualArtwork",
+        "name": "Urban Expression No. 1",
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80",
+        "description": "Original expressionist painting featuring vibrant mixed media on canvas.",
+        "artMedium": "Oil and Mixed Media",
+        "artworkSurface": "Canvas",
+        "artform": "Painting",
+        "height": {
+          "@type": "QuantitativeValue",
+          "value": "48",
+          "unitCode": "INK"
+        },
+        "width": {
+          "@type": "QuantitativeValue",
+          "value": "36",
+          "unitCode": "INK"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "Inquire for Price",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Resets & Styling */
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #141414;
+      --bg-modal: #181818;
+      --accent-gold: #c5a059;
+      --accent-gold-hover: #e0b86c;
+      --text-main: #f5f5f5;
+      --text-muted: #a0a0a0;
+      --border-subtle: #262626;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 1000;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .brand-logo span {
+      color: var(--accent-gold);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      margin-top: 60px;
+      background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,1) 100%),
+                  url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+    }
+
+    .btn-gold {
+      background-color: var(--accent-gold);
+      color: #000;
+      padding: 0.9rem 2rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-gold:hover {
+      background-color: var(--accent-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Gallery Section */
+    .gallery-container {
+      max-width: 1300px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-gold);
+      margin: 0.75rem auto 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .artwork-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .artwork-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-gold);
+    }
+
+    .artwork-img-wrapper {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .artwork-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .artwork-card:hover .artwork-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .artwork-info {
+      padding: 1.5rem;
+    }
+
+    .artwork-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .artwork-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .artwork-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 0.8rem;
+    }
+
+    .artwork-price {
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    .btn-inquire-sm {
+      background: none;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-inquire-sm:hover {
+      background-color: var(--accent-gold);
+      color: #000;
+    }
+
+    /* Lightbox / Catalog Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-content {
+      background-color: var(--bg-modal);
+      border: 1px solid var(--border-subtle);
+      width: 100%;
+      max-width: 850px;
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        flex-direction: column;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    }
+
+    .modal-preview {
+      flex: 1;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-preview img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+    }
+
+    .modal-details {
+      flex: 1;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--accent-gold);
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="brand-logo">Gallery <span>Collection</span></div>
+    <nav>
+      <ul>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#inquire" onclick="openModal('General Collection Inquiry', 'Requesting full price list and private viewing schedule.')">Inquire</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h1>Original Fine Art Works</h1>
+    <p>A private gallery of modern expressionist and curated paintings available for acquisition.</p>
+    <button class="btn-gold" onclick="openModal('Full Catalog Request', 'Please send the complete PDF catalog and provenance details.')">Request PDF Catalog</button>
+  </section>
+
+  <!-- Main Artwork Gallery -->
+  <main class="gallery-container" id="works">
+    <h2 class="section-title">Featured Works</h2>
+    
+    <div class="gallery-grid">
+      
+      <!-- Artwork Card 1 -->
+      <div class="artwork-card" onclick="openModal('Urban Expression No. 1', 'Inquiring regarding availability and acquisition terms for Urban Expression No. 1.')">
+        <div class="artwork-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80" alt="Urban Expression No. 1 - Mixed Media on Canvas">
+        </div>
+        <div class="artwork-info">
+          <h3 class="artwork-title">Urban Expression No. 1</h3>
+          <p class="artwork-meta">Mixed Media on Canvas | 48" x 36"</p>
+          <div class="artwork-action">
+            <span class="artwork-price">Inquire for Price</span>
+            <button class="btn-inquire-sm">Inquire</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Artwork Card 2 -->
+      <div class="artwork-card" onclick="openModal('Metropolitan Rhythm', 'Inquiring regarding availability and acquisition terms for Metropolitan Rhythm.')">
+        <div class="artwork-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80" alt="Metropolitan Rhythm - Acrylic on Panel">
+        </div>
+        <div class="artwork-info">
+          <h3 class="artwork-title">Metropolitan Rhythm</h3>
+          <p class="artwork-meta">Acrylic on Wood Panel | 60" x 40"</p>
+          <div class="artwork-action">
+            <span class="artwork-price">Inquire for Price</span>
+            <button class="btn-inquire-sm">Inquire</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Artwork Card 3 -->
+      <div class="artwork-card" onclick="openModal('Harbor Solitude', 'Inquiring regarding availability and acquisition terms for Harbor Solitude.')">
+        <div class="artwork-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?auto=format&fit=crop&w=800&q=80" alt="Harbor Solitude - Oil on Canvas">
+        </div>
+        <div class="artwork-info">
+          <h3 class="artwork-title">Harbor Solitude</h3>
+          <p class="artwork-meta">Oil on Linen | 36" x 36"</p>
+          <div class="artwork-action">
+            <span class="artwork-price">Inquire for Price</span>
+            <button class="btn-inquire-sm">Inquire</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Collector Inquiry Modal Form -->
+  <div class="modal" id="inquiryModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      
+      <div class="modal-preview">
+        <img id="modalImage" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80" alt="Artwork Preview">
+      </div>
+
+      <div class="modal-details">
+        <h3 class="artwork-title" id="modalTitle">Private Acquisition Inquiry</h3>
+        <p class="artwork-meta" style="margin-bottom: 1.5rem;">Enter your contact information to receive pricing, provenance, and high-resolution spec sheets.</p>
+
+        <!-- Web3Forms Free Form Submission Integration -->
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" id="formSubject" value="New Collector Inquiry">
+          
+          <div class="form-group">
+            <label for="collectorName">Full Name</label>
+            <input type="text" id="collectorName" name="name" required placeholder="Collector or Representative Name">
+          </div>
+
+          <div class="form-group">
+            <label for="collectorEmail">Email Address</label>
+            <input type="email" id="collectorEmail" name="email" required placeholder="collector@domain.com">
+          </div>
+
+          <div class="form-group">
+            <label for="collectorMessage">Message / Inquiries</label>
+            <textarea id="collectorMessage" name="message" rows="3" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-gold" style="width: 100%;">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Fine Art Gallery Collection. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript Interaction Logic -->
+  <script>
+    const modal = document.getElementById('inquiryModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('collectorMessage');
+    const formSubject = document.getElementById('formSubject');
+
+    function openModal(pieceTitle, defaultMessage) {
+      modalTitle.textContent = pieceTitle;
+      modalMessage.value = defaultMessage;
+      formSubject.value = 'Collector Inquiry: ' + pieceTitle;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+  </script>
+</body>
+</html>
